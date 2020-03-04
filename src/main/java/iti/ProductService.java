@@ -1,40 +1,30 @@
 package iti;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProductService implements ProductServiceInterface{
 
-    private List<Product> products;
-    private static ProductService productService = null;
-    private ProductService(){
-        products = new ArrayList<Product>();
-    }
+    ProductRepositoryInterface productRepositoryInterface;
 
-    public static ProductService getInstance() {
-        if(productService == null) {
-            productService = new ProductService();
-            return productService;
-        }
-        else {
-            return productService;
-        }
+    @Autowired
+    public ProductService(@Qualifier("productRepository") ProductRepositoryInterface
+                                  productRepositoryInter) {
+        productRepositoryInterface = productRepositoryInter;
     }
 
     @Override
-    public List<Product> getProduts() {
+    public Product addProduct(Product product) {
         return null;
     }
 
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-
-    public List<Product> getProducts() {
-        return products;
+    @Override
+    public List<Product> getAllProducts() {
+        return null;
     }
 }
 
