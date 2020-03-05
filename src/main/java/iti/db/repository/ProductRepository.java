@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 @EnableScan
 public interface ProductRepository extends CrudRepository<Product, String> {
 
+    Product findBySku(String productId);
 }

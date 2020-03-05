@@ -62,7 +62,7 @@ public class ProductService{
     }
 
     public ResponseEntity<ProductDetailsDTO> getProductDetail(String productId) {
-       final Product productFound = productRepository.findOne(productId);
+       final Product productFound = productRepository.findBySku(productId);
        if (Objects.nonNull(productFound)){
            return ResponseEntity.ok(ProductDetailsDTO.fromProduct(productFound));
        }
