@@ -1,30 +1,63 @@
 package iti;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ProductService implements ProductServiceInterface{
-
-    ProductRepositoryInterface productRepositoryInterface;
+public class ProductService{
 
     @Autowired
-    public ProductService(@Qualifier("productRepository") ProductRepositoryInterface
-                                  productRepositoryInter) {
-        productRepositoryInterface = productRepositoryInter;
+    ProductRepositoryInterface productRepositoryInterface;
+
+    public ResponseEntity<HttpResponse> getAllProducts(){
+        List<Product> products = productRepositoryInterface.findAllProducts();
+        if (products == null) {
+            return new ResponseEntity<HttpResponse>(
+                    new HttpResponse("500",
+                            "ERROR",
+                            "Error fetching products details",
+                            products
+                    ),
+                    HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
+        return new ResponseEntity<HttpResponse>(
+                new HttpResponse(
+                        "200",
+                        "SUCCESS",
+                        "Products Details",
+                        products
+                ),
+                HttpStatus.OK);
     }
 
-    @Override
-    public Product addProduct(Product product) {
-        return null;
-    }
+    public ResponseEntity<HttpResponse> addProduct (Product product) {
+        Product newProduct = productRepositoryInterface.saveProduct(product);
 
-    @Override
-    public List<Product> getAllProducts() {
-        return null;
+        ProductMetaData productMetaData = null;
+        if (newProduct == null) {
+            productMetaData = new ProductMetaData(product.getId(), product.getName());
+            return new ResponseEntity<HttpResponse>(
+                    new HttpResponse(
+                            "500",
+                            "ERROR",
+                            "Task creation failed",
+                            productMetaData),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        productMetaData = new ProductMetaData(newProduct.getId(), newProduct.getName());
+        return new ResponseEntity<HttpResponse>(
+                new HttpResponse(
+                        "200",
+                        "SUCCESS",
+                        "Product created successfully",
+                        productMetaData),
+                HttpStatus.OK);
     }
 }
 
