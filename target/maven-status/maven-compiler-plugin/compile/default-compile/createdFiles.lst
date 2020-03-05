@@ -1,9 +1,9 @@
 iti/db/config/DynamoDBConfig.class
+iti/db/repository/ProductRepository.class
 iti/service/ProductService.class
 iti/model/Product.class
 iti/ProductApplication.class
 iti/model/Price.class
 iti/controller/ProductController.class
-iti/db/repository/ProductRepositoryInterface.class
 iti/model/ProductMetaData.class
 iti/http/HttpResponse.class

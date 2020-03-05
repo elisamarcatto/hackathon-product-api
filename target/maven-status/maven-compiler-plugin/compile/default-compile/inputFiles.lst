@@ -4,6 +4,6 @@
 /home/elisa/Documents/hackathon-product-api/src/main/java/iti/ProductApplication.java
 /home/elisa/Documents/hackathon-product-api/src/main/java/iti/service/ProductService.java
 /home/elisa/Documents/hackathon-product-api/src/main/java/iti/controller/ProductController.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/db/repository/ProductRepository.java
 /home/elisa/Documents/hackathon-product-api/src/main/java/iti/http/HttpResponse.java
 /home/elisa/Documents/hackathon-product-api/src/main/java/iti/model/Product.java
-/home/elisa/Documents/hackathon-product-api/src/main/java/iti/db/repository/ProductRepositoryInterface.java

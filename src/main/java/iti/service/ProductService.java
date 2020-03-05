@@ -2,7 +2,7 @@ package iti.service;
 
 import iti.model.Product;
 import iti.model.ProductMetaData;
-import iti.db.repository.ProductRepositoryInterface;
+import iti.db.repository.ProductRepository;
 import iti.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +15,10 @@ import java.util.List;
 public class ProductService{
 
     @Autowired
-    ProductRepositoryInterface productRepositoryInterface;
+    ProductRepository productRepository;
 
     public ResponseEntity<HttpResponse> getAllProducts(){
-        List<Product> products = productRepositoryInterface.findAllProducts();
+        Iterable<Product> products = productRepository.findAll();
         if (products == null) {
             return new ResponseEntity<HttpResponse>(
                     new HttpResponse("500",
@@ -40,16 +40,16 @@ public class ProductService{
     }
 
     public ResponseEntity<HttpResponse> addProduct (Product product) {
-        Product newProduct = productRepositoryInterface.saveProduct(product);
+        Product newProduct = productRepository.save(product);
 
         ProductMetaData productMetaData = null;
         if (newProduct == null) {
-            productMetaData = new ProductMetaData(product.getId(), product.getName());
+            /*productMetaData = new ProductMetaData(product.getId(), product.getName());*/
             return new ResponseEntity<HttpResponse>(
                     new HttpResponse(
                             "500",
                             "ERROR",
-                            "Task creation failed",
+                            "Product creation failed",
                             productMetaData),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
