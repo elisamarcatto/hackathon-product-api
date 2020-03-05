@@ -1,0 +1,11 @@
+amazon:
+  # dynamodb-connection-type
+  # LOCAL = Connect to a local DynamoDB using the endpoint.
+  # REMOTE_KEYS = Connect to AWS using the access and secret keys. Endpoint will be ignored.
+  # REMOTE_INSTANCE_PROFILE = Connect to DynamoDB from an EC2 using an instance profile. No need for keys
+  dynamodb-connection-type: LOCAL
+  aws:
+    accesskey:
+    secretkey:
+  dynamodb:
+    endpoint: http://localhost:8000/

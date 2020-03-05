@@ -1,9 +1,9 @@
-iti/ProductService.class
-iti/ProductMetaData.class
-iti/HttpResponse.class
-iti/Price.class
+iti/db/config/DynamoDBConfig.class
+iti/service/ProductService.class
+iti/model/Product.class
 iti/ProductApplication.class
-iti/ProductController.class
-iti/DynamoDBConfig.class
-iti/ProductRepositoryInterface.class
-iti/Product.class
+iti/model/Price.class
+iti/controller/ProductController.class
+iti/db/repository/ProductRepositoryInterface.class
+iti/model/ProductMetaData.class
+iti/http/HttpResponse.class
