@@ -1,7 +1,7 @@
 package iti.service;
 
+import iti.dto.ProductDetailsDTO;
 import iti.model.Product;
-import iti.model.ProductMetaData;
 import iti.db.repository.ProductRepository;
 import iti.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Objects;
 
 @Component
 public class ProductService{
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     public ResponseEntity<HttpResponse> getAllProducts(){
         Iterable<Product> products = productRepository.findAll();
@@ -59,6 +59,14 @@ public class ProductService{
                         "Product created successfully",
                         newProduct),
                 HttpStatus.OK);
+    }
+
+    public ResponseEntity<ProductDetailsDTO> getProductDetail(String productId) {
+       final Product productFound = productRepository.findOne(productId);
+       if (Objects.nonNull(productFound)){
+           return ResponseEntity.ok(ProductDetailsDTO.fromProduct(productFound));
+       }
+       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
 

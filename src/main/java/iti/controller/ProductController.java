@@ -1,5 +1,6 @@
 package iti.controller;
 
+import iti.dto.ProductDetailsDTO;
 import iti.http.HttpResponse;
 import iti.model.Product;
 import iti.service.ProductService;
@@ -25,5 +26,11 @@ public class ProductController {
             @RequestBody Product newProduct,
             @RequestParam(value = "version", required = false) String apiVersion) {
         return productService.addProduct(newProduct);
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<ProductDetailsDTO> getProductDetail(
+            @PathVariable(value = "id") String productId) {
+        return productService.getProductDetail(productId);
     }
 }
