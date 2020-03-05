@@ -1,0 +1,9 @@
+iti/ProductService.class
+iti/ProductMetaData.class
+iti/HttpResponse.class
+iti/Price.class
+iti/ProductApplication.class
+iti/ProductController.class
+iti/DynamoDBConfig.class
+iti/ProductRepositoryInterface.class
+iti/Product.class
