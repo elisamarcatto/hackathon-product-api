@@ -42,25 +42,22 @@ public class ProductService{
     public ResponseEntity<HttpResponse> addProduct (Product product) {
         Product newProduct = productRepository.save(product);
 
-        ProductMetaData productMetaData = null;
         if (newProduct == null) {
-            productMetaData = new ProductMetaData(product.getSku(), product.getName());
             return new ResponseEntity<HttpResponse>(
                     new HttpResponse(
                             "500",
                             "ERROR",
                             "Product creation failed",
-                            productMetaData),
+                            newProduct),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        productMetaData = new ProductMetaData(newProduct.getSku(), newProduct.getName());
         return new ResponseEntity<HttpResponse>(
                 new HttpResponse(
-                        "200",
+                        "201",
                         "SUCCESS",
                         "Product created successfully",
-                        productMetaData),
+                        newProduct),
                 HttpStatus.OK);
     }
 }
