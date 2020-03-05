@@ -1,0 +1,9 @@
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/model/Price.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/db/config/DynamoDBConfig.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/model/ProductMetaData.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/ProductApplication.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/service/ProductService.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/controller/ProductController.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/db/repository/ProductRepository.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/http/HttpResponse.java
+/home/elisa/Documents/hackathon-product-api/src/main/java/iti/model/Product.java
