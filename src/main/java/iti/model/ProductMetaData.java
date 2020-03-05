@@ -2,16 +2,16 @@ package iti.model;
 
 public class ProductMetaData {
 
-    private final Integer id;
+    private final String sku;
     private final String name;
 
-    public ProductMetaData(Integer id, String name) {
-        this.id = id;
+    public ProductMetaData(String sku, String name) {
+        this.sku = sku;
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
+    public String getSku() {
+        return sku;
     }
 
     public String getTaskName() {

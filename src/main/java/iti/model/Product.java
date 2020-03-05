@@ -4,10 +4,12 @@ import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.UUID;
+
 @DynamoDBTable(tableName = "Product")
 public class Product {
 
-    private Integer id;
+    private String id;
     private String sku;
     private String name;
     private String shortDescription;
@@ -17,14 +19,13 @@ public class Product {
 
     @JsonCreator
     public Product(
-            @JsonProperty("id") Integer id,
             @JsonProperty("sku") String sku,
             @JsonProperty("name") String name,
             @JsonProperty("shortDescription") String shortDescription,
             @JsonProperty("longDescription") String longDescription,
             @JsonProperty("imageUrl") String imageUrl,
             @JsonProperty("price") Price price) {
-        this.id = id;
+        this.id = UUID.randomUUID().toString();
         this.sku = sku;
         this.name = name;
         this.shortDescription = shortDescription;
@@ -37,16 +38,16 @@ public class Product {
 
     }
 
-    @DynamoDBHashKey(attributeName = "id")
-    public int getId() {
+    @DynamoDBAttribute(attributeName = "id")
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    @DynamoDBAttribute(attributeName = "sku")
+    @DynamoDBHashKey(attributeName = "sku")
     public String getSku() {
 
         return sku;

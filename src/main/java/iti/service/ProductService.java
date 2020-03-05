@@ -44,7 +44,7 @@ public class ProductService{
 
         ProductMetaData productMetaData = null;
         if (newProduct == null) {
-            /*productMetaData = new ProductMetaData(product.getId(), product.getName());*/
+            productMetaData = new ProductMetaData(product.getSku(), product.getName());
             return new ResponseEntity<HttpResponse>(
                     new HttpResponse(
                             "500",
@@ -54,7 +54,7 @@ public class ProductService{
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        productMetaData = new ProductMetaData(newProduct.getId(), newProduct.getName());
+        productMetaData = new ProductMetaData(newProduct.getSku(), newProduct.getName());
         return new ResponseEntity<HttpResponse>(
                 new HttpResponse(
                         "200",
